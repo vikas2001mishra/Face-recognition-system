@@ -44,7 +44,14 @@ print(encodeowner)          #(the face encoding for the 'imgowner'image).
 print(encodetester)         #(the face encoding for the 'imgtester' image).
 
 
+# 5.Visual Output:
 
+cv2.putText(imgtester, f'{results} {round(faceDis[0], 2)}', (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)  #show the comparison result and distance.
+
+cv2.imshow('Owner', imgowner)
+cv2.imshow('Tester', imgtester)        #Displays the images ('Owner' and 'Tester') with rectangles drawn around detected faces.
+
+cv2.waitKey(0)   #Waits indefinitely for a key press to close the displayed windows.
 
 
 
