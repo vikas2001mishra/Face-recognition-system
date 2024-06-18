@@ -29,3 +29,26 @@ for cl in myList:
     classNames.append(os.path.splitext(cl)[0])      #removes the file extension from the filename (cl) using 'os.path.splitext' and appends the resulting name to the 'classNames' list. 
                                                      This list will contain the class names or labels for each image.
 print(classNames)                                   #This line prints the contents of the 'classNames' list
+
+
+
+# 4.Encoding Faces:
+
+def findEncoding(images):                                     #Defines a function to encode faces from images.
+    encodeList = []                                           #creates an empty list to store the face encodings.
+
+    for img in images:
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)           #converts the color space of the image from BGR (OpenCV's default color order) to RGB.
+        encode = face_recognition.face_encodings(img)[0]     #Extracts face encodings for each image and appends them to 'encodeList'.
+        encodeList.append(encode)                            #appends the face encoding
+        print(len(encodeList))                               #prints the current length of the 'encodeList'.
+        # print(classNames[img]) 
+        print(encodeList)                                    #prints the contents of the 'encodeList'.
+        return encodeList                                    #The function returns 'encodeList', which contains face encodings for all images.
+
+encodeListKnow = findEncoding(images)                        #'findEncoding(images)' calls the findEncoding function with the images list as input and stores the resulting list of face 
+                                                               encodings in the variable encodeListKnow.
+print('Encoding Done ')                                      #prints a message indicating that the encoding process is complete.
+print(len(encodeListKnow))                                   #prints the length of the 'encodeListKnow' list.
+print(encodeListKnow)                                        #prints the contents of the 'encodeListKnow' list.
+
