@@ -56,7 +56,8 @@ cv2.waitKey(0)   #Waits indefinitely for a key press to close the displayed wind
 
 
 
-
+# Summary:
+This Python script uses the face_recognition library along with OpenCV (cv2) for face detection, encoding, and comparison between two images ('Vikas.jpg' and 'image.png'). It draws rectangles around detected faces, compares their encodings to determine similarity, and visually displays the results.
 
 
 # Attendance.py:-
@@ -146,3 +147,8 @@ while True:                                      #Runs an infinite loop to conti
 
     cv2.imshow('WebCam', img)               #Displays the webcam feed with recognized faces and names.
     cv2.waitKey(1)                          #Waits for a key press (1 millisecond) to exit the loop and close the window.
+
+
+
+# summary:
+This Python script uses the face_recognition library along with OpenCV (cv2) to perform real-time face recognition using a webcam. It loads images from a specified directory, extracts face encodings, and compares them with faces detected in the webcam feed. Detected faces are annotated with names if recognized, and the results are displayed in real-time.
