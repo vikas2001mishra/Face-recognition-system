@@ -20,6 +20,19 @@ imgtester = face_recognition.load_image_file('ImageAttendace/image.png')       #
 imgtester = cv2.cvtColor(imgtester, cv2.COLOR_BGR2RGB)
 
 
+# 3.Face Detection and Encoding:
+
+faceLoc = face_recognition.face_locations(imgowner)[0]              #detects the locations of faces in 'the imgowner' image and returns a list of bounding boxes (coordinates) for each 
+                                                                     detected face.
+encodeowner = face_recognition.face_encodings(imgowner)[0]          #[0] selects the first (and in this case, the only) face location from the list and assigns it to the variable 
+                                                                     'faceLoc'.
+cv2.rectangle(imgowner, (faceLoc[3], faceLoc[0]), (faceLoc[1], faceLoc[2]), (255, 0, 255), 2)     #Draws a rectangle around the detected face using the coordinates provided by faceLoc.
+
+faceLoctester = face_recognition.face_locations(imgtester)[0]           #Detect the face location in 'imgtester' and store it in 'faceLoctester'.
+encodetester = face_recognition.face_encodings(imgtester)[0]            #Compute the face encoding for the detected face in 'imgtester' and store it in 'encodetester'.
+cv2.rectangle(imgtester, (faceLoc[3], faceLoc[0]), (faceLoc[1], faceLoc[2]), (255, 0, 255), 2)   #Draw a rectangle around the detected face
+
+
 # Attendance.py:-
 
 # 1.Imports:
