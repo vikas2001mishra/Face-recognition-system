@@ -11,6 +11,15 @@ import face_recognition       #Library for face recognition tasks.
 
 
 
+# 2.Loading and Preprocessing Images:
+
+imgowner = face_recognition.load_image_file('ImageAttendace/Vikas.jpg')        # Loads an image ('Vikas.jpg') of the owner's face using 
+imgowner = cv2.cvtColor(imgowner, cv2.COLOR_BGR2RGB)                           #converts it from BGR to RGB color format using 'cv2.cvtColor()'.
+
+imgtester = face_recognition.load_image_file('ImageAttendace/image.png')       #Loads another image ('image.png') for testing, performs the same color conversion.
+imgtester = cv2.cvtColor(imgtester, cv2.COLOR_BGR2RGB)
+
+
 # Attendance.py:-
 
 # 1.Imports:
