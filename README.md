@@ -1,6 +1,16 @@
 # Face-recognition-system
 Sure, let me explain the code step by step:
 
+# main.py:-
+
+# 1.Imports:
+
+import cv2                    #OpenCV library for image processing.
+import numpy as np            #NumPy library for numerical operations.
+import face_recognition       #Library for face recognition tasks.
+
+
+
 # Attendance.py:-
 
 # 1.Imports:
