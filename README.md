@@ -52,3 +52,39 @@ print('Encoding Done ')                                      #prints a message i
 print(len(encodeListKnow))                                   #prints the length of the 'encodeListKnow' list.
 print(encodeListKnow)                                        #prints the contents of the 'encodeListKnow' list.
 
+
+
+# 5.Face Recognition using Webcam:
+
+cap = cv2.VideoCapture(0)                        #Opens the default webcam for capturing video.
+while True:                                      #Runs an infinite loop to continuously process frames from the webcam.
+    success, img = cap.read()                    #reads a frame from the video capture and stores it in the img variable.
+    imgS = cv2.resize(img, (0, 0), None, 0.25, 0.25)     #resizes the frame to 25% of its original size for faster processing.
+    imgS = cv2.cvtColor(imgS, cv2.COLOR_BGR2RGB)         #converts the color space of the resized frame from BGR to RGB.
+
+    faceCurFrame = face_recognition.face_locations(imgS)                     #Detects face locations in the resized frame.
+    encodeCurFrame = face_recognition.face_encodings(imgS, faceCurFrame)     #Computes face encodings for the detected faces in the resized frame.
+
+    for encodeFace, faceLoc in zip(encodeCurFrame, faceCurFrame):                 #The loop iterates over each face encoding (encodeFace) and its corresponding face location (faceLoc) 
+                                                                                    using the 'zip' function.
+
+        matches = face_recognition.compare_faces(encodeListKnow, encodeFace)       #compares the current face encoding (encodeFace) with the known face encodings (encodeListKnow) and 
+                                                                                     stores the boolean results in the matches variable.
+
+        faceDis = face_recognition.face_distance(encodeListKnow, encodeFace)           #If a match is found (matches[matchIndex] is True), it retrieves the corresponding name 
+                                                                                        (classNames[matchIndex]) and draws a rectangle around the face with the name displayed.
+
+        print(faceDis)
+
+        matchIndex = np.argmin(faceDis)
+
+        if matches[matchIndex]:
+            name = classNames[matchIndex].upper()
+            y1, x2, y2, x1 = faceLoc
+            y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
+            cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
+            cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
+
+    cv2.imshow('WebCam', img)               #Displays the webcam feed with recognized faces and names.
+    cv2.waitKey(1)                          #Waits for a key press (1 millisecond) to exit the loop and close the window.
