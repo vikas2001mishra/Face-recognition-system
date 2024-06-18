@@ -33,6 +33,25 @@ encodetester = face_recognition.face_encodings(imgtester)[0]            #Compute
 cv2.rectangle(imgtester, (faceLoc[3], faceLoc[0]), (faceLoc[1], faceLoc[2]), (255, 0, 255), 2)   #Draw a rectangle around the detected face
 
 
+# 4.Face Comparison:
+
+results = face_recognition.compare_faces([encodeowner], encodetester)    #Compares the face encodings of 'encodeowner' and 'encodetester' to determine if they match. Returns a list of 
+                                                                           boolean values indicating the comparison result.
+faceDis = face_recognition.face_distance([encodeowner], encodetester)    #Computes the distance between face encodings, which can be used as a measure of similarity.
+
+print(results, faceDis)     #Prints the 'results' (results as booleans indicating match/not match, 'faceDis' as the distance between faces
+print(encodeowner)          #(the face encoding for the 'imgowner'image).
+print(encodetester)         #(the face encoding for the 'imgtester' image).
+
+
+
+
+
+
+
+
+
+
 # Attendance.py:-
 
 # 1.Imports:
