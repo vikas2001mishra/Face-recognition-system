@@ -1,9 +1,58 @@
+# Steps Involved in Face Recognition:
+
+# Import Libraries: 
+Import the necessary libraries for face recognition and image processing.
+
+import cv2                    #OpenCV library for image processing.
+import numpy as np            #NumPy library for numerical operations.
+import face_recognition       #Library for face recognition tasks.
+
+
+
+# Load Images: 
+Load images of known individuals and the image you want to test against.
+
+# Encode Faces: 
+Convert the loaded images into a format that can be compared (face encodings).
+
+# Face Detection: 
+Detect faces in the input image.
+
+# Face Matching: 
+Compare the detected faces with the known face encodings to find matches.
+
+# Display Results: 
+Display the results, including marking detected faces and showing the match names.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Face-recognition-system
 Sure, let me explain the code step by step:
 
 # main.py:-
 
 # 1.Imports:
+Import the necessary libraries for face recognition and image processing.
 
 import cv2                    #OpenCV library for image processing.
 import numpy as np            #NumPy library for numerical operations.
